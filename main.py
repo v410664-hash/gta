@@ -1,5 +1,3 @@
-with open("main.py", "w") as f:
-    f.write('''
 import json
 from kivy.app import App
 from kivy.uix.boxlayout import BoxLayout
@@ -9,10 +7,8 @@ from kivy.uix.label import Label
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.uix.scrollview import ScrollView
 from kivy.uix.textinput import TextInput
-from kivy.utils import platform
 
 class MenuPanel(BoxLayout):
-    """Бічна панель навігації, як в оригінальній ПК-версії"""
     def __init__(self, sm, **kwargs):
         super().__init__(**kwargs)
         self.orientation = 'vertical'
@@ -22,7 +18,6 @@ class MenuPanel(BoxLayout):
         
         self.add_widget(Label(text="БЗВП\nРОЗКЛАД", font_size='16sp', bold=True, size_hint_y=None, height=50, halign='center'))
         
-        # Кнопки лівого меню
         btn_shabloni = Button(text="📋 Шаблони", size_hint_y=None, height=45)
         btn_algoritmi = Button(text="⚙️ Алгоритми", size_hint_y=None, height=45)
         btn_import = Button(text="📥 Імпорт JSON", size_hint_y=None, height=45)
@@ -34,18 +29,16 @@ class MenuPanel(BoxLayout):
         self.add_widget(btn_shabloni)
         self.add_widget(btn_algoritmi)
         self.add_widget(btn_import)
-        self.add_widget(Label()) # Розпірка
+        self.add_widget(Label())
 
 class ImportScreen(Screen):
-    """Екран завантаження JSON-структури"""
     def __init__(self, app_instance, **kwargs):
         super().__init__(**kwargs)
         self.app = app_instance
         layout = BoxLayout(orientation='vertical', padding=20, spacing=15)
-        
         layout.add_widget(Label(text="Вставте текст вашого JSON шаблону сюди:", font_size='16sp', size_hint_y=None, height=30))
         
-        self.json_input = TextInput(hint_text='{"exportedAt": "2026...", "templates": [...]}', multiline=True)
+        self.json_input = TextInput(hint_text='{"templates": [...]}', multiline=True)
         layout.add_widget(self.json_input)
         
         import_btn = Button(text="Імпортувати дані", background_color=(0.1, 0.5, 0.1, 1), size_hint_y=None, height=50)
@@ -54,7 +47,6 @@ class ImportScreen(Screen):
         
         self.status_lbl = Label(text="", size_hint_y=None, height=30)
         layout.add_widget(self.status_lbl)
-        
         self.add_widget(layout)
 
     def process_import(self, instance):
@@ -69,7 +61,6 @@ class ImportScreen(Screen):
             self.status_lbl.markup = True
 
 class ShabloniScreen(Screen):
-    """Екран відображення мобільних карток Шаблонів"""
     def __init__(self, app_instance, **kwargs):
         super().__init__(**kwargs)
         self.app = app_instance
@@ -98,7 +89,6 @@ class ShabloniScreen(Screen):
         self.add_widget(layout)
 
 class AlgoritmiScreen(Screen):
-    """Екран відображення Алгоритмів підрозділів"""
     def __init__(self, app_instance, **kwargs):
         super().__init__(**kwargs)
         self.app = app_instance
@@ -119,7 +109,6 @@ class AlgoritmiScreen(Screen):
             for alg in algorithms:
                 status_color = "[color=3399FF]" if alg.get('status') == "Published" else "[color=999999]"
                 info_text = f"⚙️ {alg.get('name')} ({alg.get('subUnit')})\nПериод: {alg.get('startDate')} - {alg.get('endDate')} | {status_color}{alg.get('status')}[/color]"
-                
                 lbl = Label(text=info_text, markup=True, font_size='14sp', size_hint_y=None, height=60, halign='left')
                 lbl.bind(size=lbl.setter('text_size'))
                 grid.add_widget(lbl)
@@ -132,22 +121,17 @@ class MainLayout(BoxLayout):
     def __init__(self, app_instance, **kwargs):
         super().__init__(**kwargs)
         self.orientation = 'horizontal'
-        
         sm = ScreenManager()
         sm.add_widget(ShabloniScreen(app_instance, name='shabloni'))
         sm.add_widget(AlgoritmiScreen(app_instance, name='algoritmi'))
         sm.add_widget(ImportScreen(app_instance, name='import'))
-        
         self.add_widget(MenuPanel(sm=sm))
         self.add_widget(sm)
 
 class ScheduleCloneApp(App):
     def build(self):
-        # Початковий пустий словник, який заповниться при імпорті
         self.game_data = {"templates": [], "algorithms": []}
         return MainLayout(self)
 
 if __name__ == '__main__':
     ScheduleCloneApp().run()
-''')
-print("Повноцінний мобільний клон БЗВП успішно згенеровано у файл main.py!")
