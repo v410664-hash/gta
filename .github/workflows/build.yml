@@ -1,0 +1,43 @@
+name: Автоматична збірка APK БЗВП
+
+on:
+  push:
+    branches: [ master, main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+
+    steps:
+    - name: Клонування коду
+      uses: actions/checkout@v3
+
+    - name: Налаштування Java 17
+      uses: actions/setup-java@v3
+      with:
+        distribution: 'temurin'
+        java-version: '17'
+
+    - name: Налаштування Python 3.11
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+
+    - name: Встановлення системних бібліотек
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y git zip unzip autoconf libtool pkg-config zlib1g-dev libncurses5-dev libssl-dev cmake libffi-dev libgstreamer1.0-dev
+
+    - name: Встановлення Buildozer та Cython
+      run: |
+        pip install --upgrade pip
+        pip install "buildozer>=1.5.0" "cython<3.0.0"
+
+    - name: Фінальна компіляція в APK
+      run: buildozer android debug
+
+    - name: Видача готового файлу
+      uses: actions/upload-artifact@v4
+      with:
+        name: BZVP-Schedule-APK
+        path: bin/*.apk
