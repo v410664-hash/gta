@@ -15,7 +15,6 @@ android.api = 33
 android.minapi = 24
 android.ndk = 25.2.9519653
 android.ndk_api = 24
-android.ndk_path = /home/runner/custom-ndk
 android.accept_sdk_license = True
 android.build_mode = debug
 
