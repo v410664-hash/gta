@@ -10,9 +10,15 @@ requirements = python3,kivy
 orientation = portrait
 fullscreen = 0
 android.permissions = INTERNET, READ_EXTERNAL_STORAGE, WRITE_EXTERNAL_STORAGE
+
+# --- Додайте або оновіть ці рядки для автозавантаження SDK ---
 android.api = 33
 android.minapi = 21
+android.sdk = 33
 android.ndk = 25b
+android.accept_sdk_license = True
+# -------------------------------------------------------------
+
 android.androidx = True
 p4a.branch = master
 android.build_mode = debug
