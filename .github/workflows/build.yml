@@ -7,26 +7,48 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    container:
-      image: kivy/buildozer:latest
 
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
 
-    - name: Fix git safe directory
-      run: |
-        git config --global --add safe.directory /__w/gta/gta
+    - name: Set up Python 3.10
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.10'
 
-    - name: Install stable python-for-android
+    - name: Install system dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y \
+            git \
+            zip \
+            unzip \
+            autoconf \
+            libtool \
+            pkg-config \
+            zlib1g-dev \
+            libncurses5-dev \
+            libncursesw5-dev \
+            libffi-dev \
+            libssl-dev \
+            ant \
+            openjdk-17-jdk
+
+    - name: Install stable Buildozer and p4a
       run: |
         pip install --upgrade pip
-        pip install --upgrade "python-for-android==2024.01.21"
+        pip install Cython==3.0.10
+        pip install buildozer==1.5.0
+        pip install python-for-android==2023.09.0
 
     - name: Build with Buildozer
+      env:
+        ANDROID_NDK_HOME: /usr/local/lib/android/sdk/ndk/25.2.9519653
+        ANDROIDNDK: /usr/local/lib/android/sdk/ndk/25.2.9519653
+        JAVA_HOME: /usr/lib/jvm/java-17-openjdk-amd64
       run: |
-        rm -rf .buildozer bin
-        echo "y" | buildozer -v android debug
+        buildozer -v android debug
 
     - name: Upload APK artifact
       uses: actions/upload-artifact@v4
