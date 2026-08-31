@@ -1,4 +1,7 @@
-name: CI
+- name: Install stable python-for-android
+      run: |
+        pip install --upgrade pip
+        pip install --upgrade "python-for-android==2023.9.16"
 
 on:
   push:
