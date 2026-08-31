@@ -4,7 +4,7 @@ title = Конструктор розкладу БЗВП
 package.name = bzvp_schedule
 package.domain = org.schedule
 source.dir = .
-source.include_exts = py,png,jpg,kv,atlas,json
+source.include_exts = py,png,jpg,kv,atlas,json,json
 version = 1.0
 requirements = python3,kivy
 orientation = portrait
@@ -18,7 +18,6 @@ android.ndk_api = 24
 android.accept_sdk_license = True
 android.androidx = True
 
-p4a.branch = master
 android.build_mode = debug
 
 [buildozer]
