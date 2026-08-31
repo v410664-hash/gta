@@ -15,6 +15,15 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
 
+    - name: Update Buildozer and P4A
+      run: |
+        pip install --upgrade pip
+        pip install --upgrade "cython<3"
+        pip install --upgrade git+https://github.com/kivy/python-for-android.git
+        pip install --upgrade git+https://github.com/kivy/buildozer.git
+      env:
+        PIP_BREAK_SYSTEM_PACKAGES: 1
+
     - name: Build Android APK
       run: |
         yes | buildozer -v android debug
