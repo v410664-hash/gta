@@ -18,11 +18,10 @@ jobs:
       run: |
         git config --global --add safe.directory /__w/gta/gta
 
-    - name: Update Buildozer and p4a inside container
+    - name: Install stable python-for-android
       run: |
         pip install --upgrade pip
-        pip install --upgrade git+https://github.com/kivy/buildozer.git
-        pip install --upgrade git+https://github.com/kivy/python-for-android.git
+        pip install --upgrade "python-for-android==2024.01.21"
 
     - name: Build with Buildozer
       run: |
