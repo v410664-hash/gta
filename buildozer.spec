@@ -16,7 +16,6 @@ android.minapi = 24
 android.ndk = 25.2.9519653
 android.ndk_api = 24
 android.accept_sdk_license = True
-android.androidx = True
 android.build_mode = debug
 
 [buildozer]
