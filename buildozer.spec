@@ -6,7 +6,7 @@ package.domain = org.schedule
 source.dir = .
 source.include_exts = py,png,jpg,kv,atlas,json
 version = 1.0
-requirements = python3==3.12,kivy
+requirements = python3,kivy
 orientation = portrait
 fullscreen = 0
 android.permissions = INTERNET, READ_EXTERNAL_STORAGE, WRITE_EXTERNAL_STORAGE
@@ -17,8 +17,6 @@ android.ndk = 27.3.13750724
 android.ndk_api = 24
 android.accept_sdk_license = True
 android.androidx = True
-
-p4a.branch = master
 android.build_mode = debug
 
 [buildozer]
