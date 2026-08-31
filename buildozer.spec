@@ -13,12 +13,11 @@ android.permissions = INTERNET, READ_EXTERNAL_STORAGE, WRITE_EXTERNAL_STORAGE
 
 android.api = 33
 android.minapi = 24
+android.ndk = 25.2.9519653
 android.ndk_api = 24
+android.ndk_path = /home/runner/custom-ndk
 android.accept_sdk_license = True
 android.build_mode = debug
-
-# Збираємо тільки під сучасні 64-бітні процесори, щоб уникнути помилок 32-бітних ліб
-android.archs = arm64-v8a
 
 [buildozer]
 log_level = 2
