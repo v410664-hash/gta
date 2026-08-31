@@ -13,12 +13,13 @@ android.permissions = INTERNET, READ_EXTERNAL_STORAGE, WRITE_EXTERNAL_STORAGE
 
 android.api = 33
 android.minapi = 24
-android.ndk = 27.3.13750724
+android.ndk = 25b
 android.ndk_api = 24
 android.accept_sdk_license = True
 android.androidx = True
 
-p4a.branch = master
+# Використовуємо стабильну гілку замість master, щоб уникнути битих посилань 404
+p4a.branch = release-2024.01_fix
 android.build_mode = debug
 
 [buildozer]
