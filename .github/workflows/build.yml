@@ -22,7 +22,13 @@ jobs:
         sudo apt-get update
         sudo apt-get install -y \
           git zip unzip openjdk-17-jdk autoconf automake libtool pkg-config gettext \
-          zlib1g-dev libncurses5-dev libncursesw5-dev libffi-dev libssl-dev build-essential
+          zlib1g-dev libncurses5-dev libncursesw5-dev libffi-dev libssl-dev build-essential wget
+
+    - name: Download and setup NDK manually
+      run: |
+        wget -q https://dl.google.com/android/repository/android-ndk-r25b-linux.zip
+        unzip -q android-ndk-r25b-linux.zip -d /home/runner/
+        mv /home/runner/android-ndk-r25b /home/runner/android-ndk
 
     - name: Install Buildozer and dependencies
       run: |
