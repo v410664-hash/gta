@@ -21,8 +21,8 @@ jobs:
       run: |
         sudo apt-get update
         sudo apt-get install -y \
-          git zip unzip openjdk-17-jdk autoconf libtool pkg-config \
-          zlib1g-dev libncurses5-dev libncursesw5-dev libffi-dev libssl-dev
+          git zip unzip openjdk-17-jdk autoconf automake libtool pkg-config gettext \
+          zlib1g-dev libncurses5-dev libncursesw5-dev libffi-dev libssl-dev build-essential
 
     - name: Install Buildozer and P4A from master
       run: |
