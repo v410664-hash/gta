@@ -7,50 +7,18 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    container:
+      image: kivy/buildozer:latest
 
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
 
-    - name: Set up Python 3.10
-      uses: actions/setup-python@v5
-      with:
-        python-version: '3.10'
-
-    - name: Install dependencies
+    - name: Fix git safe directory
       run: |
-        sudo apt-get update
-        sudo apt-get install -y \
-            git \
-            zip \
-            unzip \
-            autoconf \
-            libtool \
-            pkg-config \
-            zlib1g-dev \
-            libncurses5-dev \
-            libncursesw5-dev \
-            libffi-dev \
-            libssl-dev \
-            ant \
-            openjdk-17-jdk
-
-    - name: Install Buildozer and p4a from source
-      run: |
-        pip install --upgrade pip
-        pip install Cython==3.0.10
-        pip install git+https://github.com/kivy/buildozer.git
-        pip install git+https://github.com/kivy/python-for-android.git
-
-    - name: Clear old Buildozer cache
-      run: |
-        rm -rf .buildozer
+        git config --global --add safe.directory /__w/gta/gta
 
     - name: Build with Buildozer
-      env:
-        ANDROID_NDK_HOME: /usr/local/lib/android/sdk/ndk/27.3.13750724
-        ANDROIDNDK: /usr/local/lib/android/sdk/ndk/27.3.13750724
-        JAVA_HOME: /usr/lib/jvm/java-17-openjdk-amd64
       run: |
         buildozer -v android debug
 
