@@ -11,15 +11,13 @@ orientation = portrait
 fullscreen = 0
 android.permissions = INTERNET, READ_EXTERNAL_STORAGE, WRITE_EXTERNAL_STORAGE
 
-# --- Додайте або оновіть ці рядки для автозавантаження SDK ---
-android.ndk = 27.3.13750724
-android.ndk_api = 24
 android.api = 33
 android.minapi = 24
+android.ndk = 27.3.13750724
+android.ndk_api = 24
 android.accept_sdk_license = True
-# -------------------------------------------------------------
-
 android.androidx = True
+
 p4a.branch = master
 android.build_mode = debug
 
