@@ -18,7 +18,6 @@ android.ndk_api = 24
 android.accept_sdk_license = True
 android.androidx = True
 
-p4a.branch = release-2024.01_fix
 android.build_mode = debug
 
 [buildozer]
