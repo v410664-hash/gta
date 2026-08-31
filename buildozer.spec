@@ -1,28 +1,23 @@
 [app]
 
-# (str) Title of your application
 title = Конструктор розкладу БЗВП
-
-# (str) Package name
 package.name = bzvp_schedule
-
-# (str) Package domain (needed for android packaging)
 package.domain = org.schedule
-
-# (str) Source where the source of the application resides
 source.dir = .
-
-# (str) Application versioning
-version = 1.0
-
-# (str) Package name
-package.name = bzvp_schedule
-
-# (str) Package domain (needed for android packaging)
-package.domain = org.schedule
-
-# (str) Source where the source of the application resides
-source.dir = .
-
-# (list) Source files to include (let it include python and kv files)
 source.include_exts = py,png,jpg,kv,atlas,json
+version = 1.0
+requirements = python3,kivy
+orientation = portrait
+fullscreen = 0
+android.permissions = INTERNET, READ_EXTERNAL_STORAGE, WRITE_EXTERNAL_STORAGE
+android.api = 33
+android.minapi = 21
+android.ndk = 25b
+android.androidx = True
+p4a.branch = master
+android.build_mode = debug
+
+[buildozer]
+log_level = 2
+warn_root = 1
+bin_dir = ./bin
