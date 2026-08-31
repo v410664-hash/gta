@@ -6,7 +6,7 @@ package.domain = org.schedule
 source.dir = .
 source.include_exts = py,png,jpg,kv,atlas,json
 version = 1.0
-requirements = python3,kivy
+requirements = python3==3.11,kivy
 orientation = portrait
 fullscreen = 0
 android.permissions = INTERNET, READ_EXTERNAL_STORAGE, WRITE_EXTERNAL_STORAGE
