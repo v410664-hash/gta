@@ -13,9 +13,9 @@ android.permissions = INTERNET, READ_EXTERNAL_STORAGE, WRITE_EXTERNAL_STORAGE
 
 # --- Додайте або оновіть ці рядки для автозавантаження SDK ---
 android.api = 33
-android.minapi = 21
+android.minapi = 24
 android.sdk = 33
-android.ndk = 27b
+android.ndk_api = 24
 android.accept_sdk_license = True
 # -------------------------------------------------------------
 
