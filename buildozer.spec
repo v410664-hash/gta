@@ -17,10 +17,6 @@ android.ndk_api = 24
 android.accept_sdk_license = True
 android.build_mode = debug
 
-# Використання готових компонентів середовища GitHub замість завантаження з інтернету
-android.sdk_path = /usr/local/lib/android/sdk
-android.ndk_path = /usr/local/lib/android/sdk/ndk/27.3.13750724
-
 [buildozer]
 log_level = 2
 warn_root = 1
