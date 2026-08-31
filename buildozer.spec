@@ -11,9 +11,9 @@ orientation = portrait
 fullscreen = 0
 android.permissions = INTERNET, READ_EXTERNAL_STORAGE, WRITE_EXTERNAL_STORAGE
 
-# Налаштування версій без жорсткого застарілого NDK
 android.api = 33
 android.minapi = 24
+android.ndk = 25.2.9519653
 android.ndk_api = 24
 android.accept_sdk_license = True
 android.build_mode = debug
