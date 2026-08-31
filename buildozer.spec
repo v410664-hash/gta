@@ -1,5 +1,5 @@
 [app]
-
+android.accept_sdk_license = True
 # Назва та пакет додатку
 title = My Application
 package.name =myapp
