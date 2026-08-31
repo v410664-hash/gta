@@ -15,9 +15,6 @@ source.dir = .
 # (str) Application versioning
 version = 1.0
 
-# (str) Title of your application
-title = Конструктор розкладу БЗВП
-
 # (str) Package name
 package.name = bzvp_schedule
 
