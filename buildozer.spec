@@ -18,6 +18,8 @@ android.ndk_api = 24
 android.accept_sdk_license = True
 android.androidx = True
 
+# Примусово беремо останню гілку python-for-android з актуальними посиланнями
+p4a.branch = master
 android.build_mode = debug
 
 [buildozer]
