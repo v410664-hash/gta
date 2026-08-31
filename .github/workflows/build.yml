@@ -34,11 +34,11 @@ jobs:
             libssl-dev \
             ant
 
-    - name: Install Buildozer and Cython
+    - name: Install Buildozer and Cython from master
       run: |
         pip install --upgrade pip
         pip install Cython==3.0.10
-        pip install buildozer
+        pip install --upgrade git+https://github.com/kivy/buildozer.git@master
 
     - name: Build with Buildozer
       env:
