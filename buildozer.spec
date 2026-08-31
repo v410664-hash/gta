@@ -17,6 +17,9 @@ android.ndk_api = 24
 android.accept_sdk_license = True
 android.build_mode = debug
 
+# Збираємо тільки під сучасні 64-бітні процесори, щоб уникнути помилок 32-бітних ліб
+android.archs = arm64-v8a
+
 [buildozer]
 log_level = 2
 warn_root = 1
